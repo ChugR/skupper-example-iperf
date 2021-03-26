@@ -1,6 +1,6 @@
 # Testing network throughput across clusters
 
-This tutorial demonstrates how to perform real-time network throughput measurements on an Virtual Application Network using the iperf3 tool.
+This tutorial demonstrates how to perform real-time network throughput measurements on a Virtual Application Network using the iperf3 tool.
 
 In this tutorial you will:
 
@@ -161,7 +161,7 @@ After creating the application router network, deploy one iperf3 server to each 
 
 After deploying the iperf3 servers into the private and public cloud clusters, the application router network connects the servers and enables communications even though they are running in separate clusters.
 
-1. In the terminal for the **private1** cluster, attach to the iperf3-server-a container running in the cluster and run the iperf3 client benchmark against each server:
+1. In the terminal for the **private1** cluster, attach to the iperf3-server-a container running in the **private1** cluster and run the iperf3 client benchmark against each server:
 
    ```bash
    kubectl exec -it $(kubectl get pod -l application=iperf3-server-a -o=jsonpath='{.items[0].metadata.name}') -- iperf3 -c iperf3-server-a
@@ -169,7 +169,7 @@ After deploying the iperf3 servers into the private and public cloud clusters, t
    kubectl exec -it $(kubectl get pod -l application=iperf3-server-a -o=jsonpath='{.items[0].metadata.name}') -- iperf3 -c iperf3-server-c
    ```
 
-2. In the terminal for the **public1** cluster, attach to the iperf3-server-b container running in the cluster and run the iperf3 client benchmark against each server:
+2. In the terminal for the **public1** cluster, attach to the iperf3-server-b container running in the **public1** cluster and run the iperf3 client benchmark against each server:
 
    ```bash
    kubectl exec -it $(kubectl get pod -l application=iperf3-server-b -o=jsonpath='{.items[0].metadata.name}') -- iperf3 -c iperf3-server-a
@@ -177,7 +177,7 @@ After deploying the iperf3 servers into the private and public cloud clusters, t
    kubectl exec -it $(kubectl get pod -l application=iperf3-server-b -o=jsonpath='{.items[0].metadata.name}') -- iperf3 -c iperf3-server-c
    ```
 
-3. In the terminal for the **public2** cluster, attach to the iperf3-server-c container running in the cluster and run the iperf3 client benchmark against each server:
+3. In the terminal for the **public2** cluster, attach to the iperf3-server-c container running in the **public2** cluster and run the iperf3 client benchmark against each server:
 
    ```bash
    kubectl exec -it $(kubectl get pod -l application=iperf3-server-c -o=jsonpath='{.items[0].metadata.name}') -- iperf3 -c iperf3-server-a
